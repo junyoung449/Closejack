@@ -2,7 +2,7 @@
 
 **Project**: Closejack  
 **Language**: English (optimized for AI agent token efficiency)  
-**Audience**: Claude Opus, OpenAI Codex, Claude Sonnet
+**Audience**: Claude Opus, OpenAI Codex. Claude Sonnet may participate only when explicitly delegated by Opus or the user.
 
 ---
 
@@ -10,9 +10,13 @@
 
 | ID | Agent | Primary Input | Primary Output |
 |----|-------|--------------|----------------|
-| A1 | Claude Opus | User intent, GDD | Design docs, module specs, task files |
+| A1 | Claude Opus | User intent, GDD, Codex PRs, project coordination | Design docs, module specs, task files, code review decisions, participation/delegation decisions |
 | A2 | OpenAI Codex | Module spec (`docs/modules/*.md`) | GDScript files on `feature/*` branch |
-| A3 | Claude Sonnet | Codex PR, infra requests | Review comments, merged code, git ops |
+| A3 | Claude Sonnet | Explicit Opus/user delegation only | Optional delegated assistance; no standing review, infra, merge, or project-participation authority |
+
+> User directive, 2026-06-08: Sonnet's project participation authority is transferred to Opus.
+> Opus owns review, approval / changes-requested decisions, infra delegation, and merge authorization.
+> Sonnet may assist only when Opus or the user explicitly delegates a specific task.
 
 ---
 
@@ -29,7 +33,7 @@ User ──────────► A1 (Opus)
                    ▼
            scripts/<system>/<module>.gd    ← on branch feature/<module>
                    │
-                   │ (Sonnet reviews PR)
+                   │ (Opus reviews PR)
                    ▼
                  main branch
 ```
@@ -74,7 +78,7 @@ States: `IDLE → DEALING → PLAYER_TURN → DEALER_TURN → RESULT`
 - E.g., "Deck must be shuffled before first deal, never mid-round."
 
 ## Acceptance Criteria
-- [ ] Criterion Codex must satisfy for Sonnet to approve the PR.
+- [ ] Criterion Codex must satisfy for Opus to approve the PR.
 - [ ] ...
 ```
 
@@ -110,9 +114,9 @@ One paragraph. What must be true when this task is done?
 
 ---
 
-## Review Protocol (Codex → Sonnet)
+## Review Protocol (Codex → Opus)
 
-When Codex opens a PR, Sonnet reviews against these criteria in order:
+When Codex opens a PR, Opus reviews against these criteria in order:
 
 1. **Spec compliance** — does the code match `docs/modules/<module>.md` public API exactly?
 2. **Typing** — all variables and return types statically typed?
@@ -122,7 +126,7 @@ When Codex opens a PR, Sonnet reviews against these criteria in order:
 6. **No orphan nodes** — `queue_free()` called where needed?
 7. **Acceptance criteria** — every checkbox in the spec ticked?
 
-Sonnet outputs one of:
+Opus outputs one of:
 - `APPROVED` — merge immediately
 - `CHANGES REQUESTED: <bullet list>` — Codex must fix before re-review
 
@@ -172,7 +176,7 @@ GameManager.change_state(GameManager.State.DEALING)
 
 ## Forbidden Patterns
 
-Codex must never produce these; Sonnet will reject the PR:
+Codex must never produce these; Opus will reject the PR:
 
 | Pattern | Instead use |
 |---------|------------|
@@ -204,4 +208,4 @@ If Codex encounters an ambiguity not covered by the spec:
 1. Do not guess architectural decisions.
 2. Leave a `# TODO(Opus): <question>` comment in the code.
 3. Open the PR anyway with a note in the PR description listing all TODOs.
-4. Sonnet will flag these for Opus to resolve before merge.
+4. Opus resolves these before approval and handles or explicitly delegates any merge mechanics.

@@ -3,7 +3,7 @@
 ## Agent
 - [ ] OpenAI Codex
 - [ ] Claude Opus
-- [ ] Claude Sonnet
+- [ ] Claude Sonnet (only if explicitly delegated by Opus/user)
 - [ ] Human
 
 ## Spec reference
@@ -24,7 +24,7 @@
 - [ ] ...
 - [ ] ...
 
-## GDScript checklist (Sonnet reviews this)
+## GDScript checklist (Opus reviews this)
 - [ ] Static typing on all variables and return types
 - [ ] No `print()` — uses `Logger` autoload only
 - [ ] Signals use past-tense snake_case names
