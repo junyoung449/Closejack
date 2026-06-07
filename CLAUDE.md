@@ -13,9 +13,9 @@
 
 | Agent | Role | Must NOT |
 |-------|------|----------|
-| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex | Write implementation code |
+| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex, review Codex PRs | Write implementation code |
 | **OpenAI Codex** | Implement GDScript per module spec | Make architectural decisions |
-| **Claude Sonnet** | Infra (git/GitHub/Graphify), code review, merging | Write game logic or design docs |
+| **Claude Sonnet** | Infra (git/GitHub/Graphify), merge mechanics after Opus approval | Write game logic, design docs, or final code-review decisions |
 
 ---
 
@@ -26,9 +26,9 @@
          ↓
 [Codex] implements → scripts/<system>/<module>.gd   (branch: feature/<module>)
          ↓
-[Sonnet] reviews  → comments or approves
+[Opus] reviews    → comments or approves
          ↓
-         merge to main
+[Sonnet] merges to main after Opus approval
 ```
 
 ### Task Lifecycle
@@ -85,7 +85,7 @@ closejack-godot/
 - `feature/<module-name>` — one branch per Codex task
 - `docs/<topic>` — documentation updates by Opus
 - Commit prefix: `feat:` / `fix:` / `chore:` / `docs:` / `refactor:`
-- Every merge to `main` requires a PR reviewed by Claude Sonnet
+- Every merge to `main` requires a PR reviewed by Claude Opus; Sonnet handles merge mechanics after Opus approval
 
 ---
 
