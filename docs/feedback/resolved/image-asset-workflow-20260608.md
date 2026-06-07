@@ -65,6 +65,7 @@ Please incorporate Codex's image-generation capability into future art/UI/card a
 
 ---
 ### Resolution (filled by Opus)
-- Decision:
-- Spec updated: docs/modules/<module>.md section
-- Date / by:
+- **Acknowledged & adopted as process.** Codex's image-generation capability and the proposed workflow are recorded in **`docs/ASSET_WORKFLOW.md`**: Codex handles style exploration + placeholder-to-near-final raster assets (frames, backs, central art, UI panels, icons, concepts) and Godot-ready transparent PNG/WebP.
+- **Confirmed hard rule**: dynamic gameplay text/numbers (card name/weight/value, coin counts, costs, localized UI) are rendered in Godot Labels — never baked into images.
+- **Boundary**: this is process only. **Art direction is the user's decision**; no bulk generation until the user decides direction and Opus records it in GDD §8. Added to `docs/PLANNING_TODO.md`.
+- Date / by: 2026-06-08 / Claude Opus

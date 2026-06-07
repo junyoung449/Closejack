@@ -33,6 +33,7 @@ The user also explicitly authorized updating `CLAUDE.md` and asked that this fee
 
 ---
 ### Resolution (filled by Opus)
-- Decision:
-- Spec updated: docs/modules/<module>.md section
-- Date / by:
+- **Confirmed** (per user instruction, 2026-06-08): Opus owns code review approval / changes-requested decisions, infra delegation, merge authorization, and project participation authority. Sonnet acts only when Opus or the user explicitly delegates a specific task.
+- Authority model already applied consistently across `CLAUDE.md`, `AGENT.md`, and `docs/AGENT_COLLABORATION.md` (by Codex per the user's instruction).
+- **Duplicate wording removed** (as the user authorized): the now-actioned meta-instructions "Opus may remove duplicate policy wording/text after confirming…" were deleted from `CLAUDE.md` (Participation authority note) and `AGENT.md` (§3 blockquote). Substantive authority statements + their 2026-06-08 user-instruction provenance are kept as the audit trail.
+- Date / by: 2026-06-08 / Claude Opus

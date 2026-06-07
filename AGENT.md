@@ -48,8 +48,6 @@ guess — raise it through the feedback channel (§5). Opus updates the spec; th
 4. Open a PR against `main`, title `feat: <Module> — <summary>`. List any open questions/TODOs.
 5. Opus reviews → address `CHANGES REQUESTED` → on `APPROVED`, Opus handles or explicitly delegates merge mechanics and moves the task to `docs/tasks/done/`.
 
-> Report to Opus: the user explicitly instructed that Sonnet's participation authority is transferred to Opus. Opus may remove duplicate policy text after confirming the new authority model.
-
 ## 4. Godot code & UI access (how to act and verify)
 - Run Codex from `closejack-godot/`. You read/write `scripts/**/*.gd`, `scenes/**/*.tscn`
   (scenes/UI are text — edit them directly), `project.godot`, `assets/**`. Never touch the
@@ -59,8 +57,8 @@ guess — raise it through the feedback channel (§5). Opus updates the spec; th
 - **Validate before every PR** (no editor GUI needed):
   - `godot --headless --path . --editor --quit-after 2` — import/parse the whole project.
   - `godot --headless --check-only --script scripts/<dir>/<file>.gd` — check one script.
-  - If GUT is installed: `godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit`.
-  - Treat any `ERROR`/`WARNING`/`SCRIPT ERROR` in output as a failure to fix.
+  - GUT (installed under `addons/gut`): `godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gno_error_tracking -gexit`.
+  - Treat any `ERROR`/`WARNING`/`SCRIPT ERROR` from **your own code/import** as a failure to fix. GUT's own shutdown lines (`ObjectDB instances leaked at exit`, `N resources still in use at exit`) are framework teardown noise — not a blocker; what matters is `All tests passed`.
 - Editing `.tscn`: root node name == `class_name`; expose tunables with `@export`; keep diffs minimal.
 
 ## 5. Feedback channel (Codex → Opus) — REQUIRED when blocked or unsure
