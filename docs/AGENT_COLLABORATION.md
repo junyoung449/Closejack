@@ -2,7 +2,7 @@
 
 **Project**: Closejack  
 **Language**: English (optimized for AI agent token efficiency)  
-**Audience**: Claude Opus, OpenAI Codex, Claude Sonnet
+**Audience**: Claude Opus, OpenAI Codex. Claude Sonnet may participate only when explicitly delegated by Opus or the user.
 
 ---
 
@@ -10,12 +10,13 @@
 
 | ID | Agent | Primary Input | Primary Output |
 |----|-------|--------------|----------------|
-| A1 | Claude Opus | User intent, GDD, Codex PRs | Design docs, module specs, task files, code review decisions |
+| A1 | Claude Opus | User intent, GDD, Codex PRs, project coordination | Design docs, module specs, task files, code review decisions, participation/delegation decisions |
 | A2 | OpenAI Codex | Module spec (`docs/modules/*.md`) | GDScript files on `feature/*` branch |
-| A3 | Claude Sonnet | Opus-approved PR, infra requests | Merge mechanics, git ops, Graphify/GitHub infra |
+| A3 | Claude Sonnet | Explicit Opus/user delegation only | Optional delegated assistance; no standing review, infra, merge, or project-participation authority |
 
-> User directive, 2026-06-08: Opus has code review authority. Sonnet may assist with
-> infrastructure and merging, but Opus owns approval / changes-requested decisions.
+> User directive, 2026-06-08: Sonnet's project participation authority is transferred to Opus.
+> Opus owns review, approval / changes-requested decisions, infra delegation, and merge authorization.
+> Sonnet may assist only when Opus or the user explicitly delegates a specific task.
 
 ---
 
@@ -207,4 +208,4 @@ If Codex encounters an ambiguity not covered by the spec:
 1. Do not guess architectural decisions.
 2. Leave a `# TODO(Opus): <question>` comment in the code.
 3. Open the PR anyway with a note in the PR description listing all TODOs.
-4. Opus resolves these before approval; Sonnet handles merge mechanics after approval.
+4. Opus resolves these before approval and handles or explicitly delegates any merge mechanics.

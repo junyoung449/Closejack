@@ -28,7 +28,7 @@ to, and reshuffled.
 ## Testing
 - Use GUT if available under `addons/gut`. Run headless:
   `godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit`
-- If GUT is **not** installed, file a note in `docs/feedback/` (it's an infra/Sonnet prerequisite)
+- If GUT is **not** installed, file a note in `docs/feedback/` (it's an Opus-owned infra prerequisite)
   and instead provide a minimal `tests/run_checks.gd` `SceneTree` script that asserts the
   acceptance criteria and exits non-zero on failure.
 

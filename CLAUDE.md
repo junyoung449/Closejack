@@ -13,9 +13,13 @@
 
 | Agent | Role | Must NOT |
 |-------|------|----------|
-| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex, review Codex PRs | Write implementation code |
+| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex, review Codex PRs, own project participation/delegation authority | Write implementation code |
 | **OpenAI Codex** | Implement GDScript per module spec | Make architectural decisions |
-| **Claude Sonnet** | Infra (git/GitHub/Graphify), merge mechanics after Opus approval | Write game logic, design docs, or final code-review decisions |
+| **Claude Sonnet** | Optional delegated assistance only when Opus or the user explicitly assigns a specific task | Act with standing project authority, review authority, infra authority, merge authority, or design authority |
+
+> **Participation authority**: The user explicitly instructed on 2026-06-08 that Sonnet's project
+> participation authority is transferred to Opus. Sonnet may assist only when Opus or the user
+> explicitly delegates a specific task. Opus may remove duplicate policy wording after confirming this.
 
 ---
 
@@ -28,7 +32,7 @@
          ↓
 [Opus] reviews    → comments or approves
          ↓
-[Sonnet] merges to main after Opus approval
+[Opus] merges or explicitly delegates merge mechanics
 ```
 
 ### Task Lifecycle
@@ -85,7 +89,7 @@ closejack-godot/
 - `feature/<module-name>` — one branch per Codex task
 - `docs/<topic>` — documentation updates by Opus
 - Commit prefix: `feat:` / `fix:` / `chore:` / `docs:` / `refactor:`
-- Every merge to `main` requires a PR reviewed by Claude Opus; Sonnet handles merge mechanics after Opus approval
+- Every merge to `main` requires a PR reviewed by Claude Opus; Opus handles or explicitly delegates merge mechanics
 
 ---
 

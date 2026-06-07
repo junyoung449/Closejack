@@ -14,7 +14,9 @@ you are given. You do **not** invent or change game design or architecture.
 - **Design/planning authority = the user.** Recorded by Claude Opus (A1) in the specs.
 - **Spec authority = Opus.** If the spec doesn't say it, you don't decide it — you ask (see §5).
 - **Code review authority = Opus.** The user explicitly instructed that Opus also owns code review authority.
-- Infra and merging = Claude Sonnet (A3).
+- **Project participation authority = Opus.** The user explicitly instructed that Sonnet's project
+  participation authority is transferred to Opus. Sonnet has no standing authority; any Sonnet
+  help must be explicitly delegated by Opus or the user.
 
 ## Read order (every task)
 1. `AGENT.md` (this file) — shared rules.
@@ -44,9 +46,9 @@ guess — raise it through the feedback channel (§5). Opus updates the spec; th
 2. Implement **only** the files the task lists, matching the spec's public API / signals exactly.
 3. Validate headless (§4). Zero errors/warnings; acceptance criteria pass.
 4. Open a PR against `main`, title `feat: <Module> — <summary>`. List any open questions/TODOs.
-5. Opus reviews → address `CHANGES REQUESTED` → on `APPROVED`, Sonnet handles merge mechanics and moves the task to `docs/tasks/done/`.
+5. Opus reviews → address `CHANGES REQUESTED` → on `APPROVED`, Opus handles or explicitly delegates merge mechanics and moves the task to `docs/tasks/done/`.
 
-> Report to Opus: the user explicitly instructed that code review authority belongs to Opus, not only Sonnet.
+> Report to Opus: the user explicitly instructed that Sonnet's participation authority is transferred to Opus. Opus may remove duplicate policy text after confirming the new authority model.
 
 ## 4. Godot code & UI access (how to act and verify)
 - Run Codex from `closejack-godot/`. You read/write `scripts/**/*.gd`, `scenes/**/*.tscn`
