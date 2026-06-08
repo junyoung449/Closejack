@@ -1,0 +1,12 @@
+# graphify ignore — same syntax as .gitignore. Keeps the knowledge graph focused on
+# THIS project's own code + docs (excludes third-party + generated dirs).
+
+# Third-party Godot addons (e.g. GUT test framework) — not part of our knowledge graph
+addons/
+
+# Generated / engine dirs (also git-ignored)
+.godot/
+graphify-out/
+
+# Local agent/editor config (not project knowledge)
+.claude/
