@@ -1,5 +1,12 @@
 # Closejack — CLAUDE.md
 
+> 🥇 **TOP PRIORITY — read the knowledge graph FIRST (before any raw file).**
+> Before reading source/docs or answering ANY question about this codebase, FIRST consult the
+> graphify graph: read **`graphify-out/GRAPH_REPORT.md`**, and use `graphify query "<question>"`,
+> `graphify explain "<node>"`, `graphify path "<A>" "<B>"`. Open raw files only when (a) the graph
+> lacks the needed detail, or (b) you are editing/debugging specific code. This applies to every
+> agent (Opus, Codex), every session — it overrides the default "search files" reflex.
+
 ## Project
 - **Game**: Closejack (2D blackjack-variant card game)
 - **Engine**: Godot 4.6 · GDScript · 2D
