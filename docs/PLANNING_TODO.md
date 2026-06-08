@@ -45,7 +45,7 @@
 
 ## 🤖 Codex 진행 현황
 - [x] **TASK-001 — Card + Deck** — 구현 완료(`feature/card-deck`), 테스트 7/7 통과, Opus **리뷰 APPROVED**. → **main 머지 대기**.
-- [ ] **TASK-002 — Hand** (스펙 `docs/modules/hand.md`) → **Codex 대기**. 5슬롯 왼쪽채움 · 무게21 · 버스트(중앙3번째만) · 가치/무게 합 · exact/bust 신호. **제외**: 황금코인·배수·에이스/그림(→ 향후 ScoringEngine), 위치교환(바꿔치기), 전투 덱 복사본 로직.
+- [x] **TASK-002 — Hand** — 구현 완료(`feature/hand`), Opus 리뷰 **APPROVED**(테스트 16/16), main 머지. 5슬롯 왼쪽채움 · 무게21 · 버스트(중앙3번째) · exact/bust 신호. (코인·배수·에이스/그림·위치교환·전투덱은 제외 → 별도 모듈)
 - [ ] (향후) **ScoringEngine** — 두 핸드 결합(가치곱) × 황금코인 배수(1.5^n), 에이스/그림 코인 소스. Hand의 신호를 소비. 코인×버스트 상호작용 규칙은 설계 필요.
 - 자산 생성: Codex가 이미지(카드/UI) 생성 가능 — 워크플로우는 `docs/ASSET_WORKFLOW.md`. **아트 방향성(§8)을 사용자가 먼저 정해야** 대량 생성 시작.
 

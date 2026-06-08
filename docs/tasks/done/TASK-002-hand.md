@@ -31,11 +31,17 @@ rules in `docs/KO_설계도.md` §2-3..2-5 — no game-design decisions required
 - Acceptable noise: GUT's own teardown lines (`ObjectDB instances leaked at exit`, `N resources still in use at exit`) are framework shutdown noise, not a blocker. What matters: `All tests passed`.
 
 ## Definition of Done
-- [ ] All Acceptance Criteria in `docs/modules/hand.md` pass.
-- [ ] Fully statically typed; `snake_case` members; no `print()`.
-- [ ] Project's own scripts import cleanly (GUT-framework teardown warnings excepted).
-- [ ] GUT unit tests pass headless.
-- [ ] PR opened against `main`, title: `feat: Hand — single-hand logic`, listing any `# TODO(Opus):` or `docs/feedback/*` items.
+- [x] All Acceptance Criteria in `docs/modules/hand.md` pass.
+- [x] Fully statically typed; `snake_case` members; no `print()`.
+- [x] Project's own scripts import cleanly (GUT-framework teardown warnings excepted).
+- [x] GUT unit tests pass headless — full suite 16/16 (71 asserts), Hand 9/9.
+- [x] Implemented on `feature/hand` (commit `056b37c`).
+
+## Review (Opus) — APPROVED
+- Verified by code inspection + headless GUT run on Godot 4.6.3 (`godot` now on PATH): **16/16 pass, exit 0**.
+- `hand.gd` matches the spec exactly: left-to-right fill, `center_card()` (null when <3 cards), configurable `weight_limit`, `is_exact_weight`/`is_bust`, `effective_value()` (bust → center value, 0 if empty center), `slot_cards()` returns a copy, `clear()`.
+- Out-of-scope items (coins/multiplier/Ace/art, hand-combination, slot-swap, combat-deck) correctly omitted.
+- Verdict: **APPROVED** — merged to `main`.
 
 > Note (from Opus): **Combat-deck content is intentionally NOT in this task.** "Combat deck = copy
 > of original / temporary vs permanent changes" and "slot-swap Hole Card" are still in design and
