@@ -8,10 +8,14 @@
 ---
 
 ## 0. Highest-priority context rule
-Before opening raw project files for any codebase/task work, first read
-`graphify-out/GRAPH_REPORT.md` if it exists. Use it as the project map, then run a focused
-`graphify query "<question>"` when needed, and only then open the specific raw files required
-by the task.
+Before opening raw project files for any codebase/task work, use graphify first:
+1. Read `graphify-out/GRAPH_REPORT.md` if it exists for broad project orientation.
+2. Run focused `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or
+   `graphify explain "<concept>"` when graphify-out/graph.json exists.
+3. Only then open the specific raw files required by the task.
+
+Do not grep or browse raw files first unless graphify is missing, the user explicitly says not to
+use it, or the task is about stale/incorrect graph output.
 
 ## Who you are
 You are **OpenAI Codex (A2)**. You implement GDScript in Godot, **exactly** to the module spec
@@ -80,7 +84,10 @@ a Godot/runtime error you can't resolve within the spec, or a change you think i
 Opus reads `docs/feedback/` and resolves items into the spec, then replies (and moves the file to `docs/feedback/resolved/`).
 
 ## 6. Graphify (shared project map)
-- Before coding, understand where your module fits: `/graphify query "what does <Module> depend on?"`
+- Before coding, follow §0: read `graphify-out/GRAPH_REPORT.md` for broad orientation, then run
+  `graphify query "what does <Module> depend on?"` for scoped context.
+- Prefer scoped graph commands (`graphify query`, `graphify path`, `graphify explain`) over raw
+  grep/source browsing whenever graphify-out/graph.json exists.
 - During implementation, run `graphify update .` often after code/scene structure changes. This is the
   local code-only refresh path and does not need an LLM API key.
 - After design docs, specs, images, or other semantic corpus files change, `/graphify . --update` may
