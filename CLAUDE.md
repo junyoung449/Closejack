@@ -39,6 +39,8 @@
 [Opus] merges or explicitly delegates merge mechanics
 ```
 
+> **Reviewing a Codex PR — always read the GitHub PR body**, not just the local diff. Run `gh pr view <branch>` (or `gh pr view <#>`); Codex reports its validation results, graphify status, and open TODOs/feedback there, so skipping it breaks communication. `gh` is installed (`C:\Program Files\GitHub CLI`, on PATH) and authenticated as `junyoung449`.
+
 ### Task Lifecycle
 - **Pending tasks**: `docs/tasks/pending/<task>.md` — written by Opus, read by Codex
 - **Done tasks**: move file to `docs/tasks/done/` after merge
