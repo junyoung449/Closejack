@@ -192,16 +192,22 @@ Principles to reproduce for every set:
   transformation, never a default assumption.
 - Hit-triggered effects need a clear limit ("first Red hit before this stand", "once per stand") —
   no unintended per-hit stacking.
-- Chips are integers and the most explosive lever (1 chip = ×1.5 = CE 1.0). Per-card chip payoffs
-  (like "per Blue card") need a cap or ratio so the ideal case stays inside CE/MP budgets.
+- Chips are integers and the most explosive lever (1 chip = ×1.5 = CE 1.0). **User ruling
+  (2026-06-11): conditional achievement payoffs may be HUGE — no CE cap.** (Example: C04's
+  ideal-state +5 chips was explicitly approved: "it can be much bigger.") Control explosiveness
+  through **achievement difficulty**, not numeric caps. Unconditional / low-condition effects
+  still respect the rarity baselines. Always record the ideal-state CE either way.
 
 ## 8. Draft strength notation
 - No absolute balance numbers while drafting. Use `Vp` (value unit), `Wp` (weight unit), and
   **CE** (chip-equivalent: CE 1.0 = ×1.5 final damage; CE sums = multiplied multipliers).
 - In candidate tables a rough `CE 감각` column is welcome; the final `chip_equiv` goes into the
   YAML only after user selection.
-- CE caps by rarity, P2 (risk-return) ×1.5 allowance, weight-2 ×2.0, and group MP budgets:
-  `docs/design/aces.md` §3-1.
+- CE bands by rarity, P2 (risk-return) ×1.5 allowance, weight-2 ×2.0, and group MP bands
+  (`docs/design/aces.md` §3-1) are **baselines and gauges, NOT hard caps** (user ruling
+  2026-06-11). Hard-to-achieve conditional payoffs may exceed them greatly; report band
+  overshoots together with an achievement-difficulty assessment so the user can judge whether
+  the difficulty earns the reward. Unconditional effects must stay inside their rarity baseline.
 
 ## 8.1 Final YAML format — used only AFTER user selection
 
