@@ -394,9 +394,137 @@ CE 상한·P2 보정·군 MP 예산 = §3-1.
 > 확정된 항목만 §15 스키마 YAML로 이 섹션(또는 분리 파일)에 누적한다. §13 배분·§14 금지 조합 준수, §3-1 CE/MP 기록 의무.
 > (구 TASK-003의 일괄 배치 방식은 이 워크플로우로 대체됨.)
 
-**진행 중 초안**: `docs/design/aces_items.md` — `RED-EXACT` **Redjack 군** (후보 4종 + 시뮬레이션, 사용자 선별 대기)
+**초안 근거**: `docs/design/aces_items.md` — `RED-EXACT` **Redjack 군** (후보 4종 + 시뮬레이션)
 
-_(확정 항목 아직 없음)_
+### RED-EXACT — Redjack / facet 계열
+
+#### 항목
+
+```yaml
+- id: ace_crimson_facet
+  name_ko: "진홍 절면"
+  name_en: "Crimson Facet"
+  rarity: rare
+  weight: 1
+  binding: false
+  group: redjack_facet
+  gen_type: coverage
+  structure: P1
+  archetypes: [RED-EXACT]
+  trigger: T1
+  conditions: [S1]
+  effects:
+    - family: E3
+      stage: D1
+      params:
+        target: just_hit_red_card
+        condition: red_hand_deficit_to_max_weight_between_1_and_3Wp
+        amount: deficit_to_red_max_weight
+        direction: increase_only
+  scaling: G0
+  twist_ops: []
+  chip_equiv: 1.0
+  text_ko: "레드 히트 후 레드 핸드의 무게가 최대 무게보다 3Wp 이하로 부족하면, 모자란 만큼 방금 히트한 카드의 무게를 더해 redjack을 만든다."
+  text_en: "After a Red hit, if the Red hand is within 3Wp below max weight, add the missing weight to the just-hit card to make redjack."
+  status: proposed
+  blocked_on: ""
+
+- id: ace_ruby_facet
+  name_ko: "홍옥 절면"
+  name_en: "Ruby Facet"
+  rarity: common
+  weight: 1
+  binding: false
+  group: redjack_facet
+  gen_type: coverage
+  structure: P1
+  archetypes: [RED-EXACT]
+  trigger: T2
+  conditions: [S1]
+  effects:
+    - family: E1
+      stage: D3
+      params:
+        target: red_hand_value
+        condition: redjack
+        amount: Vp
+  scaling: G0
+  twist_ops: []
+  chip_equiv: 0.75
+  text_ko: "스탠드 데미지 계산 시 redjack이면 레드 핸드 가치 +Vp. 카드의 가치는 바꾸지 않는다."
+  text_en: "During stand damage calculation, if you have redjack, Red hand value +Vp. This does not change any card's value."
+  status: proposed
+  blocked_on: ""
+
+- id: ace_garnet_facet
+  name_ko: "석류석 절면"
+  name_en: "Garnet Facet"
+  rarity: rare
+  weight: 1
+  binding: false
+  group: redjack_facet
+  gen_type: coverage
+  structure: P1
+  archetypes: [RED-EXACT]
+  trigger: T0
+  conditions: [S1]
+  effects:
+    - family: E3
+      stage: D1
+      params:
+        target: blue_hand_cards
+        condition: redjack
+        amount: -Wp
+  scaling: G0
+  twist_ops: []
+  chip_equiv: 0.5
+  text_ko: "redjack이면 블루 핸드의 모든 카드 무게 -Wp."
+  text_en: "While you have redjack, all cards in the Blue hand have weight -Wp."
+  status: proposed
+  blocked_on: ""
+
+- id: ace_scarlet_facet
+  name_ko: "선홍 절면"
+  name_en: "Scarlet Facet"
+  rarity: epic
+  weight: 1
+  binding: false
+  group: redjack_facet
+  gen_type: keystone
+  structure: P1
+  archetypes: [RED-EXACT, CHIP]
+  trigger: T2
+  conditions: [S1, S2]
+  effects:
+    - family: E5
+      stage: D6
+      params:
+        condition: redjack
+        chips_per_effective_blue_card: 1
+        bust_blue_counts_as: surviving_bust_slots
+  scaling: G0
+  twist_ops: []
+  chip_equiv: 5.0
+  text_ko: "redjack인 상태로 스탠드하면, 블루 핸드의 유효 카드 한 장당 황금 칩 +1. 기본 룰에서 버스트된 블루 핸드는 유효 카드 1장으로 센다."
+  text_en: "When you stand with redjack, gain +1 golden chip for each effective card in the Blue hand. By default, a busted Blue hand counts as 1 effective card."
+  status: proposed
+  blocked_on: ""
+```
+
+#### MP 계산표
+
+| 조합 | 적재 무게 | 이상 상태 CE 합 | 달성 난도 평가 |
+|------|-----------|-----------------|----------------|
+| Crimson Facet + Ruby Facet + Garnet Facet + Scarlet Facet | 4 | 7.25 | 기준 밴드를 크게 넘지만, Redjack 달성 후 Blue를 채워야 하는 조건 달성형 엔진이다. Scarlet Facet의 폭발력은 수치 캡이 아니라 Redjack 유지와 Blue 유효 카드 수 확보 난도로 통제한다. |
+
+#### 자체 검수
+
+- 스키마: §15 필드 사용, `value` 필드 없음.
+- 발동/적용: 모든 효과에 `stage: D#` 명시.
+- 예약어: `redjack`은 카드명이 아니라 조건 텍스트에만 사용.
+- 숨은 군 참조: 카드 텍스트는 `group`을 참조하지 않음.
+- 레인 분기: `RED-EXACT` 중심이며 Blue 접촉은 deliberate cross-lane stabilizer/payoff.
+- CE/MP: 이상 상태 CE와 군 MP 기록. 조건 달성형 초과분은 달성 난도와 함께 보고.
 
 ## 변경 이력
 
