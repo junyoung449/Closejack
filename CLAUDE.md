@@ -20,14 +20,20 @@
 
 | Agent | Role | Must NOT |
 |-------|------|----------|
-| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex, review Codex PRs, own project participation/delegation authority | Write implementation code |
-| **OpenAI Codex** | Implement GDScript per module spec | Make architectural decisions |
+| **Claude Fable 5** | Full-authority agent (released 2026-06-09). May do **any** task the user assigns — including all Opus and Codex work: design-structure extraction (esp. planning the ace/hole/playing card set, written to `docs/design/`), spec writing, code review, implementation | Invent game design (design ownership stays with the user) |
+| **Claude Opus** | Write GDD, architecture, module specs, issue tasks to Codex, review Codex PRs **on the user's command**, own project participation/delegation authority | Write implementation code; run reviews unprompted |
+| **OpenAI Codex** | Implement GDScript per module spec; **stand in for Opus** (spec upkeep, task issuance, review prep) when the user delegates because Opus is out of tokens/unavailable | Make architectural decisions; invent game design (even when covering for Opus) |
 | **Claude Sonnet** | Optional delegated assistance only when Opus or the user explicitly assigns a specific task | Act with standing project authority, review authority, infra authority, merge authority, or design authority |
 
 > **Design authority**: The game's internal logic and design belong solely to the **user**.
-> Opus only advises and records the user's decisions — it never invents game design.
-> **Review authority**: The user explicitly instructed on 2026-06-08 that Opus owns code review
-> authority.
+> Every agent — Fable 5 included — only advises and records the user's decisions; none invents game design.
+> **Review authority**: Opus owns code review, but reviews **only when the user explicitly requests
+> it**. Codex PRs accumulate openly in a queue and are reviewed in a batch on command (the user
+> instructed on 2026-06-10 that reviews were too frequent). Opus was assigned review authority on 2026-06-08.
+> **Fable-5 authority**: The user instructed on 2026-06-10 that Claude Fable 5 may perform any task
+> the user assigns, including everything Opus and Codex do; within that scope its decisions take precedence.
+> **Opus → Codex fallback**: When Opus is out of tokens or unavailable, the user may delegate Opus's
+> responsibilities to Codex until Opus returns.
 > **Participation authority**: The user explicitly instructed on 2026-06-08 that Sonnet's project
 > participation authority is transferred to Opus. Sonnet may assist only when Opus or the user
 > explicitly delegates a specific task.
@@ -41,7 +47,9 @@
          ↓
 [Codex] implements → scripts/<system>/<module>.gd   (branch: feature/<module>)
          ↓
-[Opus] reviews    → comments or approves
+[Codex] opens PR → PR waits in an open review queue (no automatic review)
+         ↓
+[User] commands a review → [Opus] reviews the queued PRs in a batch → comments or approves
          ↓
 [Opus] merges or explicitly delegates merge mechanics
 ```
@@ -66,6 +74,7 @@ closejack-godot/
 ├── docs/
 │   ├── KO_설계도.md            # Korean GDD (human-readable) — maintained by Opus
 │   ├── AGENT_COLLABORATION.md  # Agent protocol details
+│   ├── design/                 # Fable's extracted data design structure (cards etc.) → Codex names/lists
 │   ├── modules/                # Module specs for Codex (authored by Opus)
 │   └── tasks/
 │       ├── pending/            # Tasks waiting for Codex
@@ -142,9 +151,10 @@ common project map. Built in two passes: **AST** (Tree-sitter, local, no LLM) + 
 
 ## Key Design Constraints
 
-> **Content below is a placeholder. The user decides these; Opus records them after asking.**
+> Full design lives in `docs/KO_설계도.md` (source of truth). High-level facts below.
 
-- [ ] Core variant rule (what makes Closejack different from standard Blackjack)
-- [ ] Win/lose conditions
-- [ ] Player count (single-player vs multiplayer)
-- [ ] Monetization / Steam features (achievements, leaderboards, DLC)
+- [x] **Supported languages**: Korean + English (localization target — UI/card text must be translatable; avoid hardcoded display strings).
+- [x] Core loop: blackjack-style Red/Blue hand building → damage = Red value × Blue value × 1.5^(golden chips); per-hand bust at weight > 21 (only 3rd slot survives).
+- [x] Win/lose: win = clear all 8 acts' bosses; lose = player HP 0 (run ends).
+- [x] Player count: single-player (PvE).
+- [ ] Monetization / Steam features (achievements, leaderboards, DLC) — TBD.
