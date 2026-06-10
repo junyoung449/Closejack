@@ -203,6 +203,48 @@ Principles to reproduce for every set:
 - CE caps by rarity, P2 (risk-return) ×1.5 allowance, weight-2 ×2.0, and group MP budgets:
   `docs/design/aces.md` §3-1.
 
+## 8.1 Final YAML format — used only AFTER user selection
+
+Once the user selects surviving candidates, convert each one into this schema and accumulate the
+entries under `## 항목` in `docs/design/aces.md` (authoritative copy of the schema: `aces.md` §15).
+Never produce this YAML for unselected candidates.
+
+```yaml
+- id: ace_<slug>            # StringName convention
+  name_ko: ""               # meaning/mood first
+  name_en: ""               # 'ace' wordplay preferred (§6)
+  rarity: common|rare|epic|legendary
+  weight: 1                 # 1 normal | 2 special (CE cap = same-rarity ×2.0)
+  binding: false            # true = immune to every removal (release / burn / devour)
+  group: <group_id>|none    # internal label only — NEVER referenced in card text (§5)
+  gen_type: coverage|twist|signature|keystone|rulebreaker
+  structure: P1|P2          # pure-gain | risk-return
+  archetypes: [RED-EXACT]   # 1-2 tags (aces.md §2, 26 archetypes; lane prefixes RED-/BLUE- allowed)
+  trigger: T1               # aces.md §4
+  conditions: [S1]          # 0-2 conditions (aces.md §7)
+  effects:
+    - family: E3            # aces.md §8
+      stage: D1             # pipeline stage — REQUIRED for every effect (aces.md §9)
+      params: { amount: Wp }
+  scaling: G0               # aces.md §10
+  mission:                  # omit when no mission; missions live on the ace (equipped-only)
+    type: M1|M2|M3
+    condition: ""
+    duration: run|round|turns_n
+    growth_apply: ""        # REQUIRED for M3 (F12: growth applies only inside its condition)
+  twist_ops: []             # twist items only
+  chip_equiv: 1.0           # ideal-state CE (caps and group MP budget: aces.md §3-1)
+  text_ko: ""               # <=2 sentences
+  text_en: ""               # <=2 sentences; reserved rule terms (§6) verbatim
+  status: proposed          # proposed | approved | blocked
+  blocked_on: ""            # reason when blocked (e.g., F10 undesigned system)
+```
+
+Worked example — if the user approves `EXACT-C01` as drafted, it would become roughly:
+`structure: P1`, `archetypes: [RED-EXACT]`, `trigger: T1` (on Red hit), `conditions: [S1]`
+(Red within `3Wp` below max weight), `effects: [{family: E3, stage: D1, params: weight of the
+just-hit card +deficit}]`, `scaling: G0`. Fill `chip_equiv` from the candidate's CE estimate.
+
 ## 9. Review posture
 - The user owns design. Candidate generation is proposal, not implementation.
 - If the user corrects a rule, update this file (or flag it for Fable) before continuing.
