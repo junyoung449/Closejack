@@ -79,10 +79,16 @@ Chip conditions are judged at stand:
 - **Base maximum = 6 chips** (4 singles + 2 combo bonuses). Ace/picture effects can add more —
   no cap, but infinite same-turn chip loops are forbidden.
 - **Chips reset on every stand** — chip engines must re-earn each stand.
-- A **bust hand can NEVER score red guys / blue guys.** A bust hand whose effective weight (the
-  3rd-slot card) exactly equals the max weight still earns the max-weight chip (user ruling).
-  Whether that bust case counts as "redjack" by name is **pending (Q22)** — in card text, use the
-  stricter `aces_items.md` definition (**non-bust** + exact match) until the user unifies it.
+- A **bust hand can NEVER score red guys / blue guys** (its slots collapsed). But the **-jack
+  conditions are judged on EFFECTIVE weight** (user ruling, Q22 resolved 2026-06-11): non-bust =
+  total hand weight; bust = the center (3rd-slot) card's weight. Why this works — the user's own
+  example: with the default limit 21, a **weight-21 card landing in the 3rd slot** leaves a bust
+  hand whose only surviving card weighs exactly the max. Bust collapses a hand to its center
+  slot, so from that moment the hand's weight IS the center card's weight. The criterion was
+  never "bust or not" — it is the single test **effective weight == max weight**. So that bust
+  hand **is redjack/bluejack**, and two such hands make **closejack**. This ruling is the
+  foundation of the `WRECK` archetype (deliberate bust around a giant center card). Use this
+  effective-weight definition in card text.
 
 ### 1.5 Damage — the heart of every design decision
 - On stand: **damage = Red value × Blue value × 1.5^(chips)**, decimals floored **only at the end**.

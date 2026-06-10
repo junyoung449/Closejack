@@ -90,5 +90,6 @@
 | 2026-06-11 | 사용자 Q1~Q8 답변 → Fable이 `aces.md` **v2** 개정 + GDD **§2-1-1 에이스 시스템 상세** 신설 기록 + Opus 통지(`docs/feedback/ace-grammar-gdd-sync-20260611.md`). 희귀도 4단계 확정(#6 일부 해소). 새 질문 Q9~Q16 사용자 재검토 대기. |
 | 2026-06-11 | 사용자 Q9~Q16 답변 → `aces.md` **v3** (아키타입 25종 확장, 파이프라인 확정) + GDD 2차 확정 기록(칩 리셋·칩×버스트·음수 데미지·귀속 전면 면역·군 해금·방어도 방향). ScoringEngine 설계 블로커 해소. #9 군 해금 확정, #2 음수 공급원·#5 부활 적 메모. 남은 질문 Q17~Q21. |
 | 2026-06-11 | **에이스 문법 v3 사용자 approved** → TASK-003(에이스 항목 1차 배치, Codex) 발행. Codex 보류 부분 해제(에이스 항목 한정). 다음 Fable 작업 = #2 플레잉 카드 그림 풀 구조 추출. |
+| 2026-06-11 | **Q22 해소 (사용자)**: -jack 판정 = **유효 무게 기준 단일화, 버스트 포함**(무게 21 카드가 3번 슬롯 → 버스트여도 redjack; 양쪽이면 closejack). 만석 칩은 버스트 불가 유지. GDD·aces.md v3.4·aces_items 용어·card_generation_rules §1.4 동기화 + Codex 설득 코멘트(사용자 사례 기반). |
 | 2026-06-11 | **CE/MP 밴드 = 하드 캡 아님 확정 (사용자)**: 조건 달성형 보상은 CE 무제한("훨씬 커도 돼") — 폭발력은 달성 난도로 통제, 무조건부 효과만 희귀도 기준선 적용. C04 상한 플래그 철회. aces.md v3.3 + card_generation_rules §7·§8 반영. (+v3.2: `LACE` 교대 히트 아키타입 26종째 추가) |
 | 2026-06-11 | **황금 칩 명칭·콤보 확정**(redjack/bluejack/red guys/blue guys + closejack/full guys, 기본 최대 6) → GDD 3차 확정 기록. 레인 분기(RED-EXACT 등)·군=은닉 라벨을 aces.md v3.1 반영. Codex가 사용자 가이드로 작성한 `card_generation_rules.md`를 **Fable이 v2로 전면 재작성**(게임 룰 브리핑 + Redjack 모범 패턴 방법론 수록). TASK-003 → 초안 워크플로우로 대체. Redjack 군 초안 검수 완료(발견: Q22 용어 충돌, C04 CE 상한 주의). |
