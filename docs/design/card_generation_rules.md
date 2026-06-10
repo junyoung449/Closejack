@@ -184,6 +184,31 @@ Principles to reproduce for every set:
   **not** be used as card names.
 - Korean names prioritize meaning/mood; localization keys are separate (backlog #12).
 
+### 6.1 Naming logic that passed review — Redjack / Facet case
+
+The `RED-EXACT` Redjack set established the target quality bar. Reproduce this reasoning, not just
+the surface pattern:
+
+1. **Start from the play fantasy, not the dictionary.** Identify the lane, color, and action:
+   Redjack = Red hand + exact max-weight alignment. Good names should feel like red precision,
+   not merely contain `ace`.
+2. **Pick a semantic field that expresses the action.** `Facet` works because a gemstone facet is
+   cut to an exact plane; it carries precision, alignment, and crafted fit.
+3. **Layer the lane color into that field.** `Crimson Facet`, `Ruby Facet`, `Garnet Facet`,
+   `Scarlet Facet` all signal Red without using blunt labels like `Red Something`.
+4. **Use a shared motif across the 3-5 card set.** A repeated suffix/common word lets the player
+   feel the family without seeing the hidden `group`.
+5. **Ensure `ace` appears naturally.** `Facet` contains `ace`; do not force awkward forms like
+   appending `Ace` or inventing unclear puns.
+6. **Map individual names to roles when possible.** The keystone/payoff should get the most
+   dramatic name; support cards can use quieter names in the same field.
+7. **Align data identifiers after naming.** If names become `Crimson Facet` etc., ids and internal
+   group slugs should follow (`ace_crimson_facet`, `redjack_facet`) instead of preserving obsolete
+   draft names.
+
+Bad process: collect random `ace` words, add a color, then hope the set feels coherent.
+Good process: mechanic identity → metaphor field → shared motif → role-specific names → ids.
+
 ## 7. Rules-literacy pitfalls (every one of these has burned a draft)
 - Red and Blue are concrete hands — name them. No abstract "lower hand" / "higher-value hand".
 - Don't default support to both hands. A `RED-` lane card targets Red explicitly; touching the
