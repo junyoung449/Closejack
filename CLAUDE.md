@@ -145,6 +145,13 @@ closejack-godot/
 > Always allowed for every agent (no LLM cost): read-only queries — `graphify query` /
 > `path` / `explain`, reading `GRAPH_REPORT.md` — and the AST-only `graphify update .`
 > (local Tree-sitter, zero tokens; the post-commit hook runs it automatically).
+>
+> **Incremental only (user decision, 2026-06-12)**: Haiku runs `/graphify . --update`
+> (changed files only) from inside `closejack-godot/`, then commits `graphify-out/`.
+> **Full rebuilds (`/graphify .`) are retired** — two Haiku full rebuilds produced degraded
+> graphs (edge density collapse, label hallucination) and were reverted; the committed
+> baseline is the 2026-06-11 graph (90 nodes / 290 edges). A full rebuild needs an explicit
+> new user decision.
 
 Shared knowledge graph at `graphify-out/` — **committed to git** (user directive 2026-06-12)
 so sessions and machines reuse the built graph and incremental `--update` only re-extracts
