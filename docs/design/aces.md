@@ -1,14 +1,29 @@
 # 에이스(Ace) 생성 문법 · 설계도 — v3 ✅ APPROVED
 
 > **작성**: Claude Fable 5 (A0) · **확정 권한**: 사용자
-> **상태**: ✅ **사용자 approved (2026-06-11)** — 항목 생성 단계 진입. Codex 태스크 = `docs/tasks/pending/TASK-003-ace-list-batch1.md`.
-> 단, Q17~Q21(말미)은 미해결로 남음 — 해당 질문에 의존하는 아키타입은 1차 배치에서 제외(태스크 참조).
+> **상태**: ✅ **사용자 approved (2026-06-11)** — 항목 생성 단계 진입. 항목 작업 = 카드 생성 에이전트(Claude Sonnet,
+> `docs/roles/card_generation.md`)가 `docs/design/card_generation_rules.md` 워크플로우로 진행 (구 TASK-003 일괄 배치는 superseded).
+> 단, Q17~Q21(말미)은 미해결로 남음 — 해당 질문에 의존하는 아키타입(`NEGATIVE`·`GUARD`·`STRIKE`·`S8`/`E16`·`E18`)은 생성 제외.
 > **지위**: 개별 에이스를 나열하지 않는다. 에이스를 **대량 생성하기 위한 문법(축·조합 규칙·금지 조합·평가 기준)** 을 정의한다. 이 문법의 변경은 사용자 재승인 필요.
 > **v3 (2026-06-11)**: 사용자가 Q9~Q16 전부 답변 → 파이프라인 v2 **확정**, 군 크기 3~5·군 단위 해금, 귀속 = 전면 면역, 칩×버스트·음수 데미지 규칙 확정, 방어도 방향 신설, **아키타입 13종 → 25종 확장** (사용자 지시).
 > **수치 원칙**: 절대 수치는 적지 않는다. 모든 수치는 파라미터 기호(`Vp`/`Wp`) 또는 **칩 등가(CE)** 로 두고, 플레잉 카드 풀(#2) 견적 확정 후 앵커를 채운다.
 > 근거 룰: `docs/KO_설계도.md` (GDD §2-1-1 포함). GDD와 충돌하는 항목은 생성 금지.
 
 ---
+
+## 목차 (작업별 읽기 가이드 — 필요한 섹션만 읽어라)
+
+| 하려는 작업 | 읽어야 할 섹션 |
+|------|------|
+| 아키타입 파악 (어떤 군을 만들 수 있나) | §2 아키타입 26종 · §2-1 레인 분기 |
+| 후보 생성 (T/S/E/G/P/M 조합) | §4 발동 T · §5 구조 P · §6 미션 M · §7 조건 S · §8 효과 E · §10 성장 G · §12 생성 문법 |
+| 금지 사항 확인 | §14 금지 조합 F1~F15 |
+| 세기(수치) 추정·기록 | §3-1 CE/MP 산정 · §11 수치축 |
+| 효과의 적용 시점 명시 (`stage: D#`) | §9 데미지 파이프라인 v2 |
+| 군 구성·역할 배분 | §3 군 시스템 · §13 생성 유형 구성 |
+| 확정 YAML 작성 | §15 데이터 스키마 · §16 네이밍 |
+| 자체 검수 | §17 평가 루브릭 |
+| 확정된 항목 보기 / 누적 | `docs/design/aces_catalog.md` (분리 파일) |
 
 ## 구조
 
@@ -388,148 +403,21 @@ CE 상한·P2 보정·군 MP 예산 = §3-1.
 
 ## 항목
 
-> **Codex 영역 — 워크플로우 개정 (2026-06-11)**: 항목 작업은 **사용자가 지정한 아키타입 단위**로,
+> **항목 작업 영역 — 카드 생성 에이전트(Claude Sonnet) 담당 (2026-06-11 이관, 구 Codex)**:
+> 항목 작업은 **사용자가 지정한 아키타입 단위**로,
 > `docs/design/card_generation_rules.md`의 초안 워크플로우에 따라 **`docs/design/aces_items.md`에서 초안**으로 진행한다
 > (이름 없는 후보 → 사용자 선별 → 네이밍 → 확정 YAML). **사용자 승인 전 커밋 금지.**
-> 확정된 항목만 §15 스키마 YAML로 이 섹션(또는 분리 파일)에 누적한다. §13 배분·§14 금지 조합 준수, §3-1 CE/MP 기록 의무.
+> 확정된 항목만 §15 스키마 YAML로 누적한다. §13 배분·§14 금지 조합 준수, §3-1 CE/MP 기록 의무.
 > (구 TASK-003의 일괄 배치 방식은 이 워크플로우로 대체됨.)
 
-**초안 근거**: `docs/design/aces_items.md` — `RED-EXACT` **Redjack 군** (후보 4종 + 시뮬레이션)
-
-### RED-EXACT — Redjack / facet 계열
-
-#### 항목
-
-```yaml
-- id: ace_crimson_facet
-  name_ko: "진홍 절면"
-  name_en: "Crimson Facet"
-  rarity: rare
-  weight: 1
-  binding: false
-  group: redjack_facet
-  gen_type: coverage
-  structure: P1
-  archetypes: [RED-EXACT]
-  trigger: T1
-  conditions: [S1]
-  effects:
-    - family: E3
-      stage: D1
-      params:
-        target: just_hit_red_card
-        condition: red_hand_deficit_to_max_weight_between_1_and_3Wp
-        amount: deficit_to_red_max_weight
-        direction: increase_only
-  scaling: G0
-  twist_ops: []
-  chip_equiv: 1.0
-  text_ko: "레드 히트 후 레드 핸드의 무게가 최대 무게보다 3Wp 이하로 부족하면, 모자란 만큼 방금 히트한 카드의 무게를 더해 redjack을 만든다."
-  text_en: "After a Red hit, if the Red hand is within 3Wp below max weight, add the missing weight to the just-hit card to make redjack."
-  status: proposed
-  blocked_on: ""
-
-- id: ace_ruby_facet
-  name_ko: "홍옥 절면"
-  name_en: "Ruby Facet"
-  rarity: common
-  weight: 1
-  binding: false
-  group: redjack_facet
-  gen_type: coverage
-  structure: P1
-  archetypes: [RED-EXACT]
-  trigger: T2
-  conditions: [S1]
-  effects:
-    - family: E1
-      stage: D3
-      params:
-        target: red_hand_value
-        condition: redjack
-        amount: Vp
-  scaling: G0
-  twist_ops: []
-  chip_equiv: 0.75
-  text_ko: "스탠드 데미지 계산 시 redjack이면 레드 핸드 가치 +Vp. 카드의 가치는 바꾸지 않는다."
-  text_en: "During stand damage calculation, if you have redjack, Red hand value +Vp. This does not change any card's value."
-  status: proposed
-  blocked_on: ""
-
-- id: ace_garnet_facet
-  name_ko: "석류석 절면"
-  name_en: "Garnet Facet"
-  rarity: rare
-  weight: 1
-  binding: false
-  group: redjack_facet
-  gen_type: coverage
-  structure: P1
-  archetypes: [RED-EXACT]
-  trigger: T0
-  conditions: [S1]
-  effects:
-    - family: E3
-      stage: D1
-      params:
-        target: blue_hand_cards
-        condition: redjack
-        amount: -Wp
-  scaling: G0
-  twist_ops: []
-  chip_equiv: 0.5
-  text_ko: "redjack이면 블루 핸드의 모든 카드 무게 -Wp."
-  text_en: "While you have redjack, all cards in the Blue hand have weight -Wp."
-  status: proposed
-  blocked_on: ""
-
-- id: ace_scarlet_facet
-  name_ko: "선홍 절면"
-  name_en: "Scarlet Facet"
-  rarity: epic
-  weight: 1
-  binding: false
-  group: redjack_facet
-  gen_type: keystone
-  structure: P1
-  archetypes: [RED-EXACT, CHIP]
-  trigger: T2
-  conditions: [S1, S2]
-  effects:
-    - family: E5
-      stage: D6
-      params:
-        condition: redjack
-        chips_per_effective_blue_card: 1
-        bust_blue_counts_as: surviving_bust_slots
-  scaling: G0
-  twist_ops: []
-  chip_equiv: 5.0
-  text_ko: "redjack인 상태로 스탠드하면, 블루 핸드의 유효 카드 한 장당 황금 칩 +1. 기본 룰에서 버스트된 블루 핸드는 유효 카드 1장으로 센다."
-  text_en: "When you stand with redjack, gain +1 golden chip for each effective card in the Blue hand. By default, a busted Blue hand counts as 1 effective card."
-  status: proposed
-  blocked_on: ""
-```
-
-#### MP 계산표
-
-| 조합 | 적재 무게 | 이상 상태 CE 합 | 달성 난도 평가 |
-|------|-----------|-----------------|----------------|
-| Crimson Facet + Ruby Facet + Garnet Facet + Scarlet Facet | 4 | 7.25 | 기준 밴드를 크게 넘지만, Redjack 달성 후 Blue를 채워야 하는 조건 달성형 엔진이다. Scarlet Facet의 폭발력은 수치 캡이 아니라 Redjack 유지와 Blue 유효 카드 수 확보 난도로 통제한다. |
-
-#### 자체 검수
-
-- 스키마: §15 필드 사용, `value` 필드 없음.
-- 발동/적용: 모든 효과에 `stage: D#` 명시.
-- 예약어: `redjack`은 카드명이 아니라 조건 텍스트에만 사용.
-- 숨은 군 참조: 카드 텍스트는 `group`을 참조하지 않음.
-- 레인 분기: `RED-EXACT` 중심이며 Blue 접촉은 deliberate cross-lane stabilizer/payoff.
-- CE/MP: 이상 상태 CE와 군 MP 기록. 조건 달성형 초과분은 달성 난도와 함께 보고.
+**항목 YAML 누적 파일 = `docs/design/aces_catalog.md`** (2026-06-11 분리 — 이 파일의 비대화 방지).
+현재 수록: `RED-EXACT` Redjack/facet 계열 4종 (proposed) + MP 계산표 + 자체 검수.
 
 ## 변경 이력
 
 | 날짜 | 내용 | 작성자 |
 |------|------|--------|
+| 2026-06-11 | **v3.5 (하우스키핑 — 문법 내용 무변경)**: `## 항목`의 YAML·MP 계산표·자체 검수를 `docs/design/aces_catalog.md`로 **분리**(내용 그대로 이동). 상단에 작업별 읽기 목차 추가. 항목 작업 주체 Codex → **Claude Sonnet** 이관 반영(사용자 지시), TASK-003 포인터 superseded 갱신. | Claude Fable 5 |
 | 2026-06-11 | v1: 아키타입 13종, T/S/E/G 축, CE 체계, 유형 5종, 금지 조합, 스키마, Q1~Q8. | Claude Fable 5 |
 | 2026-06-11 | v2: Q1~Q8 답변 반영 — 무게 체계, 희귀도 4단계, 군+로테이션+MP, 구조축 P, 미션축 M, E17/E18, 파이프라인 v2, Q9~Q16. | Claude Fable 5 |
 | 2026-06-11 | **v3.4**: **Q22 해소 (사용자)** — 버스트 케이스도 -jack 판정 포함. 기준 = **유효 무게 = 최대 무게** 단일화(비버스트 = 총무게, 버스트 = 3번 슬롯 무게). D6·`WRECK` 갱신, GDD 2-5-7·aces_items 용어 동기화. closejack도 버스트 경유 성립 가능. | Claude Fable 5 |

@@ -37,8 +37,9 @@
 - [ ] **2. 플레잉 카드 풀** — 무게/가치 분포, 중앙 그림(효과)의 종류·예시
   - ⚠ 에이스 `NEGATIVE` 아키타입(음×음=양 데미지, 2026-06-11 확정) 성립을 위해 **음수 가치 카드(또는 음수화 효과) 공급원** 필요 (aces.md Q20). 방어도 효과의 그림 카드 적용도 고려 (Q18).
 - [ ] **3. 에이스(강화) 풀** — 효과 예시(코인 추가, 배수, 무게 조정, 조건부 등), 슬롯 수
-  - ✅ **생성 문법 v3 = 사용자 approved (2026-06-11)** → 문법 변경은 사용자 재승인 필요. (TASK-003 일괄 배치 방식은 아래 워크플로우로 대체.)
-  - 🔄 **항목 워크플로우 개정 (2026-06-11)**: 사용자 지정 아키타입 단위로 `docs/design/card_generation_rules.md`(v2 — Fable이 룰 브리핑 포함 전면 재작성) 초안 워크플로우 진행. **진행 중**: `RED-EXACT` **Redjack 군** 초안 4종 + 시뮬레이션(`docs/design/aces_items.md`) — 사용자 선별 대기. 문법 v3.1: 레인 분기(RED-/BLUE-)·군=은닉 라벨(F13 개정)·칩 명칭 반영. **새 질문 Q22**(버스트-redjack 명칭 통일).
+  - ✅ **생성 문법 v3 = 사용자 approved (2026-06-11)** → 문법 변경은 사용자 재승인 필요. (TASK-003 일괄 배치 방식은 아래 워크플로우로 대체 → `docs/tasks/superseded/`.)
+  - 🔁 **담당 이관 (2026-06-11)**: 카드 생성 업무 **Codex → Claude Sonnet** (사용자 지시). Sonnet 진입 문서 = `docs/roles/card_generation.md`. Codex는 모듈 GDScript 구현 전용으로 축소.
+  - 🔄 **항목 워크플로우 (2026-06-11 개정)**: 사용자 지정 아키타입 단위로 `docs/design/card_generation_rules.md`(v2 — Fable이 룰 브리핑 포함 전면 재작성) 초안 워크플로우 진행. **진행 중**: `RED-EXACT` **Redjack 군** 초안 4종 + 시뮬레이션, `BLUE-EXACT` **Bluejack 군** 초안 4종 + 시뮬레이션(`docs/design/aces_items.md`) — 사용자 선별 대기. 확정 YAML 누적 파일 = `docs/design/aces_catalog.md`(aces.md에서 분리). 아키타입은 현재 **26종**(v3.2 LACE 포함).
   - 🔶 **생성 문법 v3 (Fable, 2026-06-11)** → `docs/design/aces.md`. Q1~Q16 전부 사용자 답변 완료. 확정 룰은 GDD §2-1-1 + §2-5-7 + §2-6에 기록: 가치 없음·무게 한도 5 체계 / 희귀도 4단계 / 귀속 = **모든 제거 면역** / 칩 = **스탠드 시 리셋** + 칩×버스트 규칙(만석 불가·유효무게=한계 시 최대무게 칩 인정 → ScoringEngine 블로커 해소) / **음수 데미지 규칙**(한쪽 음수 0, 양쪽 음수 양수 곱) / 직접 데미지 과잉 소멸 / 군 3~5장+군 단위 해금 / 미션 = 에이스 귀속 / **파이프라인 v2 확정** / 방어도 방향. **아키타입 25종**(13→25 확장), 군별 MP 산정·예산. **남은 질문 Q17~Q21** (런당 군 수, 방어도 세부, 부활 적, 음수 공급원, 해금 트리). Opus 통지 = `docs/feedback/ace-grammar-gdd-sync-20260611.md`. → 다음: 문법 approved 선언 시 Codex 군 단위 항목 생성 시작 가능.
 - [ ] **4. 홀 카드 풀** — 일회성 아이템 효과 예시, 슬롯 수
 - [ ] **5. 적 / 보스** — 적 공격 패턴, 공격 예고 방식, 8막 보스 구상, 난이도 ↔ 여정 수 매핑
@@ -66,13 +67,13 @@
 
 ---
 
-## 🤖 Codex 진행 현황
-> **Codex 보류 부분 해제 (2026-06-11)**: 에이스 생성 문법(`docs/design/aces.md` v3)이 사용자 **approved** → **TASK-003(에이스 항목 1차 배치) 발행**으로 에이스 항목 생성에 한해 Codex 가동. 그 외 신규 Codex 지시문은 계속 보류. **플레잉 카드 그림 풀(#2)은 여전히 Fable 추출 대기**(에이스 문법과 같은 방식 적용 예정 — Q18 방어도·Q20 음수 공급원이 #2와 연동). 전투 로직 스펙(ScoringEngine 등)은 블로커 해소 상태로 사용자 지시 시 Opus(또는 Fable)가 작성.
-- [x] **TASK-001 — Card + Deck** — 구현 완료(`feature/card-deck`), 테스트 7/7 통과, Opus **리뷰 APPROVED**. → **main 머지 대기**.
-- [x] **TASK-002 — Hand** — 구현 완료(`feature/hand`), Opus 리뷰 **APPROVED**(테스트 16/16), main 머지. 5슬롯 왼쪽채움 · 무게21 · 버스트(중앙3번째) · exact/bust 신호. (코인·배수·에이스/그림·위치교환·전투덱은 제외 → 별도 모듈)
-- [ ] **TASK-003 — 에이스 항목 1차 배치** (`docs/tasks/pending/TASK-003-ace-list-batch1.md`, 코드 아님 — 데이터 리스팅) — 군 5개(계열별 1개, NEGATIVE/GUARD/STRIKE/S8/E18 제외) × 3~5장 + 무소속 common 5장, 군별 MP 계산표. 브랜치 `docs/ace-list-batch1`, PR 후 리뷰 큐 대기.
+## 🤖 에이전트 진행 현황
+> **역할 재편 (2026-06-11)**: 카드 생성(에이스 항목 등) = **Claude Sonnet** 전담(`docs/roles/card_generation.md`). **Codex = 모듈 GDScript 구현 전용** — 그 외 신규 Codex 지시문은 발행하지 않는다. **플레잉 카드 그림 풀(#2)은 여전히 Fable 추출 대기**(에이스 문법과 같은 방식 적용 예정 — Q18 방어도·Q20 음수 공급원이 #2와 연동). 전투 로직 스펙(ScoringEngine 등)은 블로커 해소 상태로 사용자 지시 시 Opus(또는 Fable)가 작성.
+- [x] **TASK-001 — Card + Deck** (Codex) — 구현 완료(`feature/card-deck`), 테스트 7/7 통과, Opus **리뷰 APPROVED**. → **main 머지 대기**.
+- [x] **TASK-002 — Hand** (Codex) — 구현 완료(`feature/hand`), Opus 리뷰 **APPROVED**(테스트 16/16), main 머지. 5슬롯 왼쪽채움 · 무게21 · 버스트(중앙3번째) · exact/bust 신호. (코인·배수·에이스/그림·위치교환·전투덱은 제외 → 별도 모듈)
+- [ ] **에이스 항목 생성 (Sonnet)** — 구 TASK-003은 superseded(`docs/tasks/superseded/`). 현재: `RED-EXACT` Redjack 군 4종 + `BLUE-EXACT` Bluejack 군 4종 초안·시뮬레이션 완료(`docs/design/aces_items.md`) — **사용자 선별 대기**. 선별 후 확정 YAML → `docs/design/aces_catalog.md`. 사용자 승인 전 커밋 금지(브랜치 `docs/ace-list-batch1`에 미커밋 작업본).
 - [ ] (보류) **ScoringEngine** — 두 핸드 결합(가치곱) × 황금 칩 배수(1.5^n, 소수점 최종 버림), 에이스/그림 칩 소스. Hand의 신호를 소비. ~~칩×버스트 상호작용 규칙은 설계 필요~~ → **확정됨 (2026-06-11)**: 칩 = 스탠드 시 리셋, 버스트 핸드 만석 칩 불가·유효 무게=한계치면 최대 무게 칩 인정, 음수 처리(한쪽 음수 → 0, 양쪽 음수 → 양수 곱), 적용 단계 = aces.md §9 파이프라인 v2(확정). **스펙화 블로커 해소** — 보류 해제 시점은 사용자 결정.
-- 자산 생성: Codex가 이미지(카드/UI) 생성 가능 — 워크플로우는 `docs/ASSET_WORKFLOW.md`. **아트 방향성(§8)을 사용자가 먼저 정해야** 대량 생성 시작.
+- 자산 생성: 이미지(카드/UI) 생성 워크플로우는 `docs/ASSET_WORKFLOW.md`. **아트 방향성(§8)을 사용자가 먼저 정해야** 대량 생성 시작.
 
 ## 🛠 운영(인프라) 메모
 - [ ] graphify 의미 그래프 재구축(`/graphify . --update`) — 새 룰 반영 위해 룰 안정화 시 1회 실행 예정.
@@ -93,3 +94,4 @@
 | 2026-06-11 | **Q22 해소 (사용자)**: -jack 판정 = **유효 무게 기준 단일화, 버스트 포함**(무게 21 카드가 3번 슬롯 → 버스트여도 redjack; 양쪽이면 closejack). 만석 칩은 버스트 불가 유지. GDD·aces.md v3.4·aces_items 용어·card_generation_rules §1.4 동기화 + Codex 설득 코멘트(사용자 사례 기반). |
 | 2026-06-11 | **CE/MP 밴드 = 하드 캡 아님 확정 (사용자)**: 조건 달성형 보상은 CE 무제한("훨씬 커도 돼") — 폭발력은 달성 난도로 통제, 무조건부 효과만 희귀도 기준선 적용. C04 상한 플래그 철회. aces.md v3.3 + card_generation_rules §7·§8 반영. (+v3.2: `LACE` 교대 히트 아키타입 26종째 추가) |
 | 2026-06-11 | **황금 칩 명칭·콤보 확정**(redjack/bluejack/red guys/blue guys + closejack/full guys, 기본 최대 6) → GDD 3차 확정 기록. 레인 분기(RED-EXACT 등)·군=은닉 라벨을 aces.md v3.1 반영. Codex가 사용자 가이드로 작성한 `card_generation_rules.md`를 **Fable이 v2로 전면 재작성**(게임 룰 브리핑 + Redjack 모범 패턴 방법론 수록). TASK-003 → 초안 워크플로우로 대체. Redjack 군 초안 검수 완료(발견: Q22 용어 충돌, C04 CE 상한 주의). |
+| 2026-06-11 | **하네스 재구조화 (Fable)**: ① 카드 생성 업무 **Codex → Claude Sonnet** 이관(사용자 지시) — Sonnet 진입 문서 `docs/roles/card_generation.md` 신설, Codex = 모듈 GDScript 구현 전용으로 축소(Opus 대행 역할 폐지). ② `aces.md ## 항목`의 YAML → `docs/design/aces_catalog.md` 분리 + aces.md 상단 작업별 목차 추가(문법 내용 무변경, v3.5). ③ 권한/역할 중복 기록 정리 — 정본 = CLAUDE.md, 나머지는 포인터. ④ TASK-003 → `docs/tasks/superseded/` 이동. ⑤ 아키타입 수 표기 26종으로 동기화. |

@@ -1,10 +1,13 @@
-# Feedback channel (Codex → Opus)
+# Feedback channel (worker agent → reviewer)
 
-This folder is how **Codex** reports problems back to **Opus** (and the user) during module
-development: spec ambiguities, suspected design errors, impossible/conflicting requirements,
-Godot/runtime errors that can't be resolved within the spec, or proposed changes.
+This folder is how worker agents report problems back to the reviewing authority (and the user):
+- **Codex → Opus** during module development: spec ambiguities, suspected design errors,
+  impossible/conflicting requirements, Godot/runtime errors that can't be resolved within the
+  spec, or proposed changes.
+- **Sonnet → Fable/Opus** during card generation: grammar ambiguities, rule conflicts,
+  impossible combinations (also mark the item `status: blocked`).
 
-**Codex must not silently work around a problem by inventing a decision.** File it here and wait.
+**No agent may silently work around a problem by inventing a decision.** File it here and wait.
 
 ## How to file
 1. Copy the template below into `docs/feedback/<MODULE>-<YYYYMMDD>.md`

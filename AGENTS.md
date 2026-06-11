@@ -7,6 +7,9 @@ then `CLAUDE.md` and `docs/AGENT_COLLABORATION.md`, then **only your module spec
 ➡️ **Start here: [`AGENT.md`](AGENT.md)**
 
 Non-negotiables (detail in `AGENT.md`):
+- **Your scope = module GDScript implementation per spec, only** (user directive 2026-06-11).
+  Card generation/naming/listing belongs to the card generation agent (Claude Sonnet) — if a
+  task asks for it, stop and report.
 - Implement the module spec **exactly**. Never invent or change game design — that authority is the user's.
 - Load only `AGENT.md` + your one module spec, to keep context small.
 - Godot 4.x only, static typing, no `print()` (use `Logger`), past-tense signals.

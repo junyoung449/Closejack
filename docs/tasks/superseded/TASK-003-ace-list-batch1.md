@@ -7,6 +7,10 @@
 > The scope/constraint lists below remain useful reference; where they conflict with
 > card_generation_rules.md, that file wins. Current state: `RED-EXACT` Redjack set drafted,
 > awaiting user selection.
+>
+> ⚠️ **OWNERSHIP TRANSFERRED (2026-06-11, later same day)**: card generation moved
+> **Codex → Claude Sonnet** (user directive). "Assigned to: Codex" below is historical.
+> Sonnet's entry doc: `docs/roles/card_generation.md`. File moved to `docs/tasks/superseded/`.
 
 ## Assigned to: Codex
 ## Spec: docs/design/aces.md (grammar **v3, user-approved 2026-06-11**) + docs/KO_설계도.md §2-1-1, §2-5-7, §2-6

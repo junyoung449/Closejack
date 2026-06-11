@@ -2,7 +2,9 @@
 
 **Project**: Closejack  
 **Language**: English (optimized for AI agent token efficiency)  
-**Audience**: Claude Opus, OpenAI Codex. Claude Sonnet may participate only when explicitly delegated by Opus or the user.
+**Scope**: the **module implementation track** (Opus ↔ Codex: spec / task / PR / review formats).
+The card generation track has its own protocol: `docs/roles/card_generation.md` +
+`docs/design/card_generation_rules.md`. Authority table & directive history: **`CLAUDE.md`**.
 
 ---
 
@@ -10,13 +12,10 @@
 
 | ID | Agent | Primary Input | Primary Output |
 |----|-------|--------------|----------------|
-| A1 | Claude Opus | User intent, GDD, Codex PRs, project coordination | Design docs, module specs, task files, code review decisions, participation/delegation decisions |
-| A2 | OpenAI Codex | Module spec (`docs/modules/*.md`) | GDScript files on `feature/*` branch |
-| A3 | Claude Sonnet | Explicit Opus/user delegation only | Optional delegated assistance; no standing review, infra, merge, or project-participation authority |
-
-> User directive, 2026-06-08: Sonnet's project participation authority is transferred to Opus.
-> Opus owns review, approval / changes-requested decisions, infra delegation, and merge authorization.
-> Sonnet may assist only when Opus or the user explicitly delegates a specific task.
+| A0 | Claude Fable 5 | Any user-assigned task | Data-design structures (`docs/design/`), specs, reviews, implementation |
+| A1 | Claude Opus | User intent, GDD, Codex PRs, project coordination | Design docs, module specs, task files, code review decisions |
+| A2 | OpenAI Codex | Module spec (`docs/modules/*.md`) | GDScript files on `feature/*` branch — **module implementation only** (2026-06-11) |
+| A3 | Claude Sonnet | User-named archetype + `docs/roles/card_generation.md` | Card candidates / simulations (`aces_items.md`), final YAML (`aces_catalog.md`) |
 
 ---
 

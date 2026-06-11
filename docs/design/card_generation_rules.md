@@ -2,9 +2,13 @@
 
 > **Priority**: mandatory for ALL card naming/listing/generation work (Ace, Playing, Hole,
 > item pools, candidate pools, names, groups). Read this WHOLE file before writing candidates.
+> **Audience**: the card generation agent — **Claude Sonnet** as of 2026-06-11 (transferred from
+> Codex by user directive). Sonnet's entry doc: `docs/roles/card_generation.md`.
 > **v2 (2026-06-11)**: rewritten by Fable on the user's order. v1 lacked the game rules entirely;
 > §1 below is now the authoritative crash course. If this file conflicts with an older task draft
 > or a generated example, follow this file; if still unclear, ask the user.
+> **v2.1 (2026-06-11)**: final YAML now accumulates in `docs/design/aces_catalog.md` (split out of
+> `aces.md ## 항목` — housekeeping, no rule change).
 > Precedence: **user > GDD (`docs/KO_설계도.md`) > grammar (`docs/design/aces.md`) > this file > task drafts.**
 
 ## 0. Authority and approval gate
@@ -126,7 +130,9 @@ If a great idea needs one of these, record it as `status: blocked` and move on.
 - `docs/design/aces.md` — **approved generation grammar**: axes (T trigger / S condition /
   E effect / G scaling / P pure-gain-vs-risk-return / M mission), forbidden combos **F1–F15**,
   CE caps per rarity, group MP budgets, lane-branch rules (`RED-`/`BLUE-` archetype forks).
-  Every candidate must be expressible in this grammar.
+  Every candidate must be expressible in this grammar. Use its top-of-file 목차 to load only
+  the sections your current step needs.
+- `docs/design/aces_catalog.md` — accumulated final YAML (post-selection only).
 - This file — workflow + rules briefing.
 
 ## 3. Candidate workflow
@@ -162,6 +168,17 @@ Principles to reproduce for every set:
 - Hard achievements need enabler support **before** payoff cards reward them; don't anchor many
   cards on rare outcomes without enablers.
 - Synergy must come from effects, never labels (§5).
+- Card text must be readable in play, Balatro-style. Prefer one condition plus one immediate
+  effect. Avoid formulas, nested condition branches, sequence bookkeeping, and derived values
+  unless the card is explicitly a rare rulebreaker and the user approves the complexity.
+- A good candidate should pass the "one-glance test": the player can read the line once and know
+  what action to try next.
+- Support cards must serve the actual victory pattern, not the archetype label. If a set rewards
+  empty slots / fewer cards, weight reduction that enables more hits is anti-synergy; use value,
+  chip, or growth rewards tied to that empty-space plan instead.
+- In a damage set, avoid stacking two payoff cards onto the same hand/stat unless that duplication
+  is the deliberate identity. Because damage is Red value x Blue value, one payoff should usually
+  strengthen the achieved lane while another keeps or grows the opposite lane.
 
 ## 5. Group and synergy rules
 - **Groups are invisible internal labels.** The player can never see or reason about `group`
@@ -243,8 +260,8 @@ Good process: mechanic identity → metaphor field → shared motif → role-spe
 ## 8.1 Final YAML format — used only AFTER user selection
 
 Once the user selects surviving candidates, convert each one into this schema and accumulate the
-entries under `## 항목` in `docs/design/aces.md` (authoritative copy of the schema: `aces.md` §15).
-Never produce this YAML for unselected candidates.
+entries in **`docs/design/aces_catalog.md`** (split out of `aces.md ## 항목` on 2026-06-11;
+authoritative copy of the schema: `aces.md` §15). Never produce this YAML for unselected candidates.
 
 ```yaml
 - id: ace_<slug>            # StringName convention
