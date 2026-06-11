@@ -1,0 +1,247 @@
+{
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\.claude\\settings.json": {
+    "mtime": 1780875178.9610653,
+    "ast_hash": "4902c5a9507e249f7f5211fde6fa12ac",
+    "semantic_hash": "4902c5a9507e249f7f5211fde6fa12ac"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\.github\\pull_request_template.md": {
+    "mtime": 1780875178.9620652,
+    "ast_hash": "3a53de0748d6272287c47304abb7a973",
+    "semantic_hash": "3a53de0748d6272287c47304abb7a973"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\AGENT.md": {
+    "mtime": 1781171129.0149179,
+    "ast_hash": "92c20ddfd4f04aa3ed13fbab96d825c8",
+    "semantic_hash": "92c20ddfd4f04aa3ed13fbab96d825c8"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\AGENTS.md": {
+    "mtime": 1781171142.1025848,
+    "ast_hash": "f9fbf99fe058b69405a1f79e9e6f1f1e",
+    "semantic_hash": "f9fbf99fe058b69405a1f79e9e6f1f1e"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\CLAUDE.md": {
+    "mtime": 1781171090.9588141,
+    "ast_hash": "6f42069ec5e66a2f5a9674286bcbfb2a",
+    "semantic_hash": "6f42069ec5e66a2f5a9674286bcbfb2a"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\README.md": {
+    "mtime": 1780848421.8538187,
+    "ast_hash": "821b5c0dc3e70bc612b3a0e9ef714ad5",
+    "semantic_hash": "821b5c0dc3e70bc612b3a0e9ef714ad5"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\LICENSE.md": {
+    "mtime": 1780875178.968065,
+    "ast_hash": "b6e6691ad140993e8e16b6a888431f9c",
+    "semantic_hash": "b6e6691ad140993e8e16b6a888431f9c"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\double_templates\\double_data_template.txt": {
+    "mtime": 1780875178.9895804,
+    "ast_hash": "fdae0cf08572faeab9a88d600f103d04",
+    "semantic_hash": "fdae0cf08572faeab9a88d600f103d04"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\double_templates\\function_template.txt": {
+    "mtime": 1780875178.9905798,
+    "ast_hash": "155ecb0711fbf16ddbfdbe6ef2e39539",
+    "semantic_hash": "155ecb0711fbf16ddbfdbe6ef2e39539"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\double_templates\\init_template.txt": {
+    "mtime": 1780875178.9915812,
+    "ast_hash": "046b52d5551f82dd93329ae535b4a8e2",
+    "semantic_hash": "046b52d5551f82dd93329ae535b4a8e2"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\double_templates\\script_template.txt": {
+    "mtime": 1780875178.9925804,
+    "ast_hash": "77317e305f5c1214ba55bd7f0cf8a104",
+    "semantic_hash": "77317e305f5c1214ba55bd7f0cf8a104"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\double_templates\\singleton_template.txt": {
+    "mtime": 1780875178.9935813,
+    "ast_hash": "ebfd02af3e936b3dfdf9920bc0c18c40",
+    "semantic_hash": "ebfd02af3e936b3dfdf9920bc0c18c40"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\fonts\\OFL.txt": {
+    "mtime": 1780875179.03458,
+    "ast_hash": "10119ab06bfc80b22eae36625b860f7b",
+    "semantic_hash": "10119ab06bfc80b22eae36625b860f7b"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\AGENT_COLLABORATION.md": {
+    "mtime": 1781171155.3041012,
+    "ast_hash": "d0c8a33c3983b3e7347db51fe638299c",
+    "semantic_hash": "d0c8a33c3983b3e7347db51fe638299c"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\ASSET_WORKFLOW.md": {
+    "mtime": 1780875179.2001517,
+    "ast_hash": "a4519bad163b7690c67f872f4a9a5a89",
+    "semantic_hash": "a4519bad163b7690c67f872f4a9a5a89"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\KO_\uc124\uacc4\ub3c4.md": {
+    "mtime": 1781117938.163687,
+    "ast_hash": "d2d9ef1926bf99d08a618f246aa2ca5d",
+    "semantic_hash": "d2d9ef1926bf99d08a618f246aa2ca5d"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\PLANNING_TODO.md": {
+    "mtime": 1781171335.8547373,
+    "ast_hash": "e456aec9c0af70a72506de448d3625a2",
+    "semantic_hash": "e456aec9c0af70a72506de448d3625a2"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\feedback\\README.md": {
+    "mtime": 1781171346.9226813,
+    "ast_hash": "d00387687147562da581aba3fb244318",
+    "semantic_hash": "d00387687147562da581aba3fb244318"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\feedback\\resolved\\card-deck-20260608.md": {
+    "mtime": 1780875179.204153,
+    "ast_hash": "fa5923f53308955954277697cacdda6d",
+    "semantic_hash": "fa5923f53308955954277697cacdda6d"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\feedback\\resolved\\image-asset-workflow-20260608.md": {
+    "mtime": 1780875179.205152,
+    "ast_hash": "c29ba9a93ae88015865a32e3d3197914",
+    "semantic_hash": "c29ba9a93ae88015865a32e3d3197914"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\feedback\\resolved\\opus-review-authority-20260608.md": {
+    "mtime": 1780875179.2061512,
+    "ast_hash": "e14f91178f3f2ab9aca099ad927930f9",
+    "semantic_hash": "e14f91178f3f2ab9aca099ad927930f9"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\modules\\card.md": {
+    "mtime": 1780875179.2071514,
+    "ast_hash": "71b62308cbe2317650c898db7210be47",
+    "semantic_hash": "71b62308cbe2317650c898db7210be47"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\modules\\deck.md": {
+    "mtime": 1780875179.208153,
+    "ast_hash": "3a8b0418199fde50b69ecc118cef92f3",
+    "semantic_hash": "3a8b0418199fde50b69ecc118cef92f3"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\modules\\hand.md": {
+    "mtime": 1780875963.1199975,
+    "ast_hash": "e5ddb2a84bbae7dae9a3dd78cfd3f4ff",
+    "semantic_hash": "e5ddb2a84bbae7dae9a3dd78cfd3f4ff"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\tasks\\done\\TASK-001-card-deck.md": {
+    "mtime": 1780875179.208153,
+    "ast_hash": "15c77c8aaa05bc22ec3c0170607180bb",
+    "semantic_hash": "15c77c8aaa05bc22ec3c0170607180bb"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\tasks\\done\\TASK-002-hand.md": {
+    "mtime": 1780910702.0016198,
+    "ast_hash": "4d3079af9a071111f3d8c08951dd8283",
+    "semantic_hash": "4d3079af9a071111f3d8c08951dd8283"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\gui\\arrow.png": {
+    "mtime": 1780875179.080586,
+    "ast_hash": "e08fa5e2d1db0b8c3be5d7c3a283e0d6",
+    "semantic_hash": "e08fa5e2d1db0b8c3be5d7c3a283e0d6"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\gui\\play.png": {
+    "mtime": 1780875179.0966413,
+    "ast_hash": "a7e19d807f2c9531dad610497baf5c99",
+    "semantic_hash": "a7e19d807f2c9531dad610497baf5c99"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\icon.png": {
+    "mtime": 1780875179.1236331,
+    "ast_hash": "f882b9f30a6463fbe33f92d3de5591a1",
+    "semantic_hash": "f882b9f30a6463fbe33f92d3de5591a1"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\Folder.svg": {
+    "mtime": 1780875179.1246336,
+    "ast_hash": "b2eb5b5a4efd5c7a7ebed1d28d72d7e8",
+    "semantic_hash": "b2eb5b5a4efd5c7a7ebed1d28d72d7e8"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\GutIconV2_base.png": {
+    "mtime": 1780875179.1276333,
+    "ast_hash": "3777a3052e1e37ab938f1ba7daefc9a8",
+    "semantic_hash": "3777a3052e1e37ab938f1ba7daefc9a8"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\GutIconV2_no_shine.png": {
+    "mtime": 1780875179.1296337,
+    "ast_hash": "1508e1b0e3716d0f83db89529b5aebaa",
+    "semantic_hash": "1508e1b0e3716d0f83db89529b5aebaa"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\HSplitContainer.svg": {
+    "mtime": 1780875179.131633,
+    "ast_hash": "7d9c8d1fa5d92d757769da1892229e03",
+    "semantic_hash": "7d9c8d1fa5d92d757769da1892229e03"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\Script.svg": {
+    "mtime": 1780875179.1336348,
+    "ast_hash": "bfe6d3baadf5fbe569922334140eb2fe",
+    "semantic_hash": "bfe6d3baadf5fbe569922334140eb2fe"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\VSplitContainer.svg": {
+    "mtime": 1780875179.135633,
+    "ast_hash": "c83a0d17f50660be250a0458540a1e0f",
+    "semantic_hash": "c83a0d17f50660be250a0458540a1e0f"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\eyey.png": {
+    "mtime": 1780875179.136634,
+    "ast_hash": "788c84e141ceca259ee61be8fae8fa99",
+    "semantic_hash": "788c84e141ceca259ee61be8fae8fa99"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\green.png": {
+    "mtime": 1780875179.1386337,
+    "ast_hash": "7e797286efcb86b4faa1ffb8c94d3729",
+    "semantic_hash": "7e797286efcb86b4faa1ffb8c94d3729"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\red.png": {
+    "mtime": 1780875179.139633,
+    "ast_hash": "76aafb04bec0b2c96e9bbcd625a4f6a1",
+    "semantic_hash": "76aafb04bec0b2c96e9bbcd625a4f6a1"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\addons\\gut\\images\\yellow.png": {
+    "mtime": 1780875179.1416335,
+    "ast_hash": "2bfcbc12c7b7fc61fc6d0576796962ba",
+    "semantic_hash": "2bfcbc12c7b7fc61fc6d0576796962ba"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\icon.svg": {
+    "mtime": 1780848421.8796823,
+    "ast_hash": "a16f2eed1b4496c4abf03d329708ba09",
+    "semantic_hash": "a16f2eed1b4496c4abf03d329708ba09"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\.codex\\hooks.json": {
+    "mtime": 1780912500.079165,
+    "ast_hash": "141d90b15c1d2c0532cae7a6d07b2050",
+    "semantic_hash": "141d90b15c1d2c0532cae7a6d07b2050"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\design\\README.md": {
+    "mtime": 1781171210.431596,
+    "ast_hash": "c39d75723c54dd6c5e3174abc086babe",
+    "semantic_hash": "c39d75723c54dd6c5e3174abc086babe"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\design\\aces.md": {
+    "mtime": 1781170976.4447029,
+    "ast_hash": "3848c833245b4bd825416a92493d0e8b",
+    "semantic_hash": "3848c833245b4bd825416a92493d0e8b"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\design\\aces_catalog.md": {
+    "mtime": 1781170900.1986907,
+    "ast_hash": "dfa9b896efc93b3c78a894463c3d5247",
+    "semantic_hash": "dfa9b896efc93b3c78a894463c3d5247"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\design\\aces_items.md": {
+    "mtime": 1781135375.596053,
+    "ast_hash": "d6355ecbb7e24ee9801902be0497a0d6",
+    "semantic_hash": "d6355ecbb7e24ee9801902be0497a0d6"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\design\\card_generation_rules.md": {
+    "mtime": 1781171191.1777058,
+    "ast_hash": "23a7b503a8e45df867dfd07449492fb7",
+    "semantic_hash": "23a7b503a8e45df867dfd07449492fb7"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\feedback\\ace-grammar-gdd-sync-20260611.md": {
+    "mtime": 1781108892.1340675,
+    "ast_hash": "3bcd47c8c7b3fa900c271bbc8d83275e",
+    "semantic_hash": "3bcd47c8c7b3fa900c271bbc8d83275e"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\roles\\card_generation.md": {
+    "mtime": 1781171017.0816586,
+    "ast_hash": "ae6e13e859f58a2b6baccb78bff0d362",
+    "semantic_hash": "ae6e13e859f58a2b6baccb78bff0d362"
+  },
+  "C:\\Users\\user\\Desktop\\closejack\\closejack-godot\\docs\\tasks\\superseded\\TASK-003-ace-list-batch1.md": {
+    "mtime": 1781171268.9608617,
+    "ast_hash": "cbd2639d384978da75a93174ea814713",
+    "semantic_hash": "cbd2639d384978da75a93174ea814713"
+  }
+}

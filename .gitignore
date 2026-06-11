@@ -2,5 +2,7 @@
 .godot/
 /android/
 
-# Graphify — generated knowledge graph (rebuild with: graphify update .)
-graphify-out/
+# Graphify — knowledge graph is COMMITTED (user directive 2026-06-12) so incremental
+# --update works across sessions/machines. Only machine-local & temp files stay ignored.
+graphify-out/.graphify_*
+!graphify-out/.graphify_labels.json

@@ -68,7 +68,8 @@ guess — raise it through the feedback channel (§5). Opus updates the spec; th
 ## 4. Godot code & UI access (how to act and verify)
 - Run Codex from `closejack-godot/`. You read/write `scripts/**/*.gd`, `scenes/**/*.tscn`
   (scenes/UI are text — edit them directly), `project.godot`, `assets/**`. Never touch the
-  git-ignored `.godot/` or `graphify-out/`.
+  git-ignored `.godot/`; never hand-edit `graphify-out/` (committed but generated — read-only
+  for you; only `graphify update .` may regenerate it).
 - Have the Godot 4.6 binary on `PATH`; allow `godot` + `git` in your Codex config
   (`sandbox_mode = "workspace-write"`).
 - **Validate before every PR** (no editor GUI needed):
@@ -89,11 +90,14 @@ a Godot/runtime error you can't resolve within the spec, or a change you think i
 
 Opus reads `docs/feedback/` and resolves items into the spec, then replies (and moves the file to `docs/feedback/resolved/`).
 
-## 6. Graphify (shared project map — full reference in `CLAUDE.md`)
+## 6. Graphify (shared project map — full reference + build policy in `CLAUDE.md`)
 - Before coding, follow §0: orient via the graph, then `graphify query` for scoped context.
-- During implementation, run `graphify update .` often after code/scene changes (AST-only, free).
-- Semantic refresh (`/graphify . --update`, after doc changes) needs an LLM key
-  (`GEMINI_API_KEY`/`GOOGLE_API_KEY`); if unavailable, report it as pending — don't block code work.
+- During implementation, run `graphify update .` often after code/scene changes (AST-only,
+  zero LLM cost — always allowed).
+- 🚨 **NEVER run a semantic/full graph build** (`/graphify .`, `/graphify <path> --update`,
+  anything invoking an LLM). Builds are run **only by the user on Haiku** (user directive,
+  2026-06-12). If docs changed, report "semantic refresh pending (user runs on Haiku)" in the
+  PR body and continue — don't block code work.
 
 ## 7. Definition of Done
 - [ ] Only the listed files changed; spec public API/signals matched exactly.

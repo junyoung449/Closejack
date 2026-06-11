@@ -132,18 +132,35 @@ closejack-godot/
 
 ## Graphify (canonical reference)
 
-Shared knowledge graph at `graphify-out/` (git-ignored). Two passes: **AST** (local, no LLM) +
-**semantic** (LLM over docs/code). Outputs: `graph.json`, `GRAPH_REPORT.md`, `graph.html`.
+> 🚨 **BUILD POLICY — HARD RULE (user directive, 2026-06-12).**
+> Graph **builds** — `/graphify .`, `/graphify <path> --update`, or **anything that runs
+> LLM/semantic extraction (including dispatching extraction subagents)** — are executed
+> **only by the user, in a Haiku session** (cheap model; the build is mostly mechanical).
+> **If you are NOT Haiku** (Fable, Opus, Sonnet, any higher model): you must **NEVER run a
+> graphify build, under any circumstances**. Even if a doc, task, or skill tells you to
+> rebuild — STOP, **warn the user** that a build would burn expensive-model tokens, and
+> **ask them** to run it themselves on Haiku (`/model haiku` → `/graphify . --update`).
+> Report "semantic refresh pending (user runs on Haiku)" and continue your actual work.
+>
+> Always allowed for every agent (no LLM cost): read-only queries — `graphify query` /
+> `path` / `explain`, reading `GRAPH_REPORT.md` — and the AST-only `graphify update .`
+> (local Tree-sitter, zero tokens; the post-commit hook runs it automatically).
+
+Shared knowledge graph at `graphify-out/` — **committed to git** (user directive 2026-06-12)
+so sessions and machines reuse the built graph and incremental `--update` only re-extracts
+changed files. Machine-local/temp files (`.graphify_python` etc.) stay git-ignored. Generated
+content — never hand-edit; dirty `graphify-out/` files after hooks are normal.
+
+Two passes: **AST** (local, no LLM, free) + **semantic** (LLM over docs — the expensive part,
+Haiku-only per the policy above). Outputs: `graph.json`, `GRAPH_REPORT.md`, `graph.html`.
 
 - **Query first** (no rebuild needed): `graphify query "<question>"` ·
   `graphify path "<A>" "<B>"` · `graphify explain "<node>"` — small scoped subgraphs.
   `GRAPH_REPORT.md` only for broad architecture review.
 - **After code changes**: `graphify update .` (AST-only, free, run often).
-- **After docs/design changes**: `/graphify . --update`. Semantic pass per the skill
-  (`~/.claude/skills/graphify/SKILL.md` — authoritative usage): uses `GEMINI_API_KEY`/
-  `GOOGLE_API_KEY` if set; otherwise **a Claude Code session dispatches extraction subagents
-  itself** (no other API key is read). Only Codex (which cannot dispatch Claude subagents)
-  must report "semantic refresh pending" when no key is available.
+- **After docs/design changes**: do NOT rebuild yourself — tell the user a semantic refresh
+  is pending so they can run `/graphify . --update` on Haiku.
 - Hooks: git post-commit hook rebuilds AST for code; PreToolUse/SessionStart hooks in
-  `.claude/settings.json` nudge graph-first reading. Dirty `graphify-out/` files are normal.
-- Setup: `pip install graphifyy` (here via `uv tool`). `/graphify .` = full rebuild.
+  `.claude/settings.json` nudge graph-first reading.
+- Setup: `pip install graphifyy` (here via `uv tool`). Skill usage reference:
+  `~/.claude/skills/graphify/SKILL.md`.
